@@ -1,6 +1,6 @@
-package br.com.bankslipinterest.core.port.in;
+package br.com.billinterest.core.port.in;
 
-import br.com.bankslipinterest.core.domain.CalculatedBill;
+import br.com.billinterest.core.domain.CalculatedBill;
 
 import java.time.LocalDate;
 

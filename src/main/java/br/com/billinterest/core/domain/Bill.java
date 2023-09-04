@@ -1,6 +1,6 @@
-package br.com.bankslipinterest.core.domain;
+package br.com.billinterest.core.domain;
 
-import br.com.bankslipinterest.core.domain.enums.BillType;
+import br.com.billinterest.core.domain.enums.BillType;
 import lombok.Getter;
 import lombok.Setter;
 
