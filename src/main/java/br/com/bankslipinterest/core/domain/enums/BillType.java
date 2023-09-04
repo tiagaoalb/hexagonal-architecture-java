@@ -1,6 +1,6 @@
 package br.com.bankslipinterest.core.domain.enums;
 
-public enum BankSlipType {
+public enum BillType {
     XPTO,
     NORMAL
 }

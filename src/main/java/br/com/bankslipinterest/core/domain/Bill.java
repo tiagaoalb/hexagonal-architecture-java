@@ -1,6 +1,6 @@
 package br.com.bankslipinterest.core.domain;
 
-import br.com.bankslipinterest.core.domain.enums.BankSlipType;
+import br.com.bankslipinterest.core.domain.enums.BillType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +9,10 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class BankSlip {
+public class Bill {
 
     private String code;
     private LocalDate dueDate;
     private BigDecimal value;
-    private BankSlipType type;
+    private BillType type;
 }
