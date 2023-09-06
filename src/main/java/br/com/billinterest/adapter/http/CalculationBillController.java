@@ -4,6 +4,7 @@ import br.com.billinterest.adapter.http.dto.CalculationBillRequest;
 import br.com.billinterest.adapter.http.dto.CalculationBillResponse;
 import br.com.billinterest.adapter.http.mapper.CalculationBillMapper;
 import br.com.billinterest.core.port.in.CalculateBillPort;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,7 @@ public class CalculationBillController {
     }
 
     @PostMapping("/calculo")
+    @Operation(summary = "Calculate bill interest")
     public ResponseEntity<CalculationBillResponse> calculateBill(@Valid @RequestBody CalculationBillRequest billRequest) {
         var calculatedBill = calculateBillPort.execute(billRequest.getCode(), billRequest.getPayDay());
         return ResponseEntity.ok(mapper.toDTO(calculatedBill));

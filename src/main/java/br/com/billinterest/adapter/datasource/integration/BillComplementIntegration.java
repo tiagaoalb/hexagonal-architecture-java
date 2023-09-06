@@ -4,7 +4,9 @@ import br.com.billinterest.adapter.datasource.integration.client.BillComplementC
 import br.com.billinterest.adapter.datasource.mapper.BillMapper;
 import br.com.billinterest.core.domain.Bill;
 import br.com.billinterest.core.port.out.BillComplementPort;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BillComplementIntegration implements BillComplementPort {
 
     private final BillComplementClient client;
