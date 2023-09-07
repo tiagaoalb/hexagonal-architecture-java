@@ -13,9 +13,9 @@ import java.time.LocalDate;
 public class CalculationBillRequest {
 
     @NotNull
-    private String code;
+    private String codigo;
     @NotNull
     @JsonProperty("data_pagamento")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate payDay;
+    private LocalDate dataPagamento;
 }

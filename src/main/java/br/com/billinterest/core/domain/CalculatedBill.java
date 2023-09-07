@@ -13,11 +13,11 @@ import java.time.LocalDate;
 @Builder
 public class CalculatedBill {
 
-    private String code;
-    private BigDecimal originalValue;
-    private BigDecimal value;
-    private LocalDate dueDate;
-    private LocalDate payDay;
-    private BigDecimal fees;
-    private BillType type;
+    private String codigo;
+    private BigDecimal valorOriginal;
+    private BigDecimal valor;
+    private LocalDate dataVencimento;
+    private LocalDate dataPagamento;
+    private BigDecimal juros;
+    private BillType tipo;
 }

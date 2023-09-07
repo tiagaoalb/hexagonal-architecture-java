@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(value = "complement", url = "${api.boleto}")
 public interface BillComplementClient {
 
-    @GetMapping("/{code}")
-    BillDTO getBill(@PathVariable(value = "code") String code);
+    @GetMapping("/{codigo}")
+    BillDTO getBill(@PathVariable(value = "codigo") String code);
 }

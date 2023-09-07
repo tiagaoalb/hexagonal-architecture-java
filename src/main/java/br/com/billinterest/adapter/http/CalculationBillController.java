@@ -27,7 +27,7 @@ public class CalculationBillController {
     @PostMapping("/calculo")
     @Operation(summary = "Calculate bill interest")
     public ResponseEntity<CalculationBillResponse> calculateBill(@Valid @RequestBody CalculationBillRequest billRequest) {
-        var calculatedBill = calculateBillPort.execute(billRequest.getCode(), billRequest.getPayDay());
+        var calculatedBill = calculateBillPort.execute(billRequest.getCodigo(), billRequest.getDataPagamento());
         return ResponseEntity.ok(mapper.toDTO(calculatedBill));
     }
 }

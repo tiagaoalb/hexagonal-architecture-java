@@ -12,12 +12,9 @@ import java.time.LocalDate;
 @Setter
 public class CalculationBillResponse {
 
-    @JsonProperty("coodigo")
-    private String code;
+    private String codigo;
     @JsonProperty("data_vencimento")
-    private LocalDate dueDate;
-    @JsonProperty("valor")
-    private BigDecimal value;
-    @JsonProperty("tipo")
-    private BillType type;
+    private LocalDate dataVencimento;
+    private BigDecimal valor;
+    private BillType tipo;
 }

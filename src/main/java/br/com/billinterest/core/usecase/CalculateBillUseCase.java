@@ -35,39 +35,39 @@ public class CalculateBillUseCase implements CalculateBillPort {
 
         validateBill(bill);
 
-        var expiredDays = getExpiredDays(bill.getDueDate(), payDay);
-        var dayFeesValue = DAILY_FEES.multiply(bill.getValue()).divide(BigDecimal.valueOf(100), RoundingMode.DOWN);
-        var fees = dayFeesValue.multiply(BigDecimal.valueOf(expiredDays)).setScale(2, RoundingMode.HALF_EVEN);
-        var calculatedBill = CalculatedBill.builder()
-                .code(bill.getCode())
-                .payDay(payDay)
-                .fees(fees)
-                .dueDate(bill.getDueDate())
-                .originalValue(bill.getValue())
-                .value(bill.getValue().add(fees))
-                .type(bill.getType())
+        var diasVencidos = getExpiredDays(bill.getDataVencimento(), payDay);
+        var valorJurosDia = DAILY_FEES.multiply(bill.getValor()).divide(BigDecimal.valueOf(100), RoundingMode.DOWN);
+        var juros = valorJurosDia.multiply(BigDecimal.valueOf(diasVencidos)).setScale(2, RoundingMode.HALF_EVEN);
+        var boletoCalculado = CalculatedBill.builder()
+                .codigo(bill.getCodigo())
+                .dataPagamento(payDay)
+                .juros(juros)
+                .dataVencimento(bill.getDataVencimento())
+                .valorOriginal(bill.getValor())
+                .valor(bill.getValor().add(juros))
+                .tipo(bill.getTipo())
                 .build();
 
-        saveBillCalculationPort.execute(calculatedBill);
+        saveBillCalculationPort.execute(boletoCalculado);
 
-        return calculatedBill;
+        return boletoCalculado;
     }
 
-    private void validateBill(Bill bill) {
-        if (bill == null) {
+    private void validateBill(Bill boleto) {
+        if (boleto == null) {
             throw new ApplicationException(ExceptionType.INVALID_BILL);
         }
 
-        if (bill.getType() != BillType.XPTO) {
+        if (boleto.getTipo() != BillType.XPTO) {
             throw new ApplicationException(ExceptionType.INVALID_BILL_TYPE);
         }
 
-        if (bill.getDueDate().isAfter(LocalDate.now())) {
+        if (boleto.getDataVencimento().isAfter(LocalDate.now())) {
             throw new ApplicationException(ExceptionType.BILL_NOT_EXPIRED);
         }
     }
 
-    private Long getExpiredDays(LocalDate dueDate, LocalDate payDay) {
-        return ChronoUnit.DAYS.between(dueDate, payDay);
+    private Long getExpiredDays(LocalDate dataVencimento, LocalDate dataPagamento) {
+        return ChronoUnit.DAYS.between(dataVencimento, dataPagamento);
     }
 }

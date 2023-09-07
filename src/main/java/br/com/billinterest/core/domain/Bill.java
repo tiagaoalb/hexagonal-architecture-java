@@ -11,8 +11,8 @@ import java.time.LocalDate;
 @Setter
 public class Bill {
 
-    private String code;
-    private LocalDate dueDate;
-    private BigDecimal value;
-    private BillType type;
+    private String codigo;
+    private LocalDate dataVencimento;
+    private BigDecimal valor;
+    private BillType tipo;
 }
